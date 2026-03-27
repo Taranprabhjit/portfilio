@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@900&family=DM+Mono:wght@300;400&display=swap');
+
+.contact {
+    height: calc(100dvh - 68px);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    background: #080c14;
+    overflow: hidden;
+}
+
+.contact .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── LEFT ── */
+.contact .left-panel {
+    position: relative;
+    z-index: 1;
+    padding: 60px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    animation: fadeRight 0.8s both;
+}
+
+.contact .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.contact .eyebrow::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: #38bdf8;
+}
+
+.contact .page-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: clamp(32px, 4vw, 80px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+    margin-bottom: 10px;
+}
+
+.contact .page-title .solid {
+    color: #f1f5f9;
+    /* display: block; */
+}
+
+.contact .page-title .outline {
+    /* display: block; */
+    padding-left: 10px;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.35);
+}
+
+.contact .tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    line-height: 1.85;
+    color: rgba(186, 195, 208, 0.6);
+    max-width: 360px;
+    margin-bottom: 30px;
+}
+
+.contact .profiles-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(186, 195, 208, 0.6);
+    margin-bottom: 14px;
+}
+
+.contact .profiles {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact .profile-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s, background 0.25s, transform 0.2s;
+}
+
+.contact .profile-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #38bdf8;
+    box-shadow: 0 0 8px #38bdf8;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s;
+}
+
+.contact .profile-link:hover {
+    border-color: rgba(56, 189, 248, 0.25);
+    background: rgba(56, 189, 248, 0.03);
+    transform: translateX(4px);
+}
+
+.contact .profile-link:hover::before {
+    transform: scaleY(1);
+}
+
+.contact .profile-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact .profile-icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.contact .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+}
+
+.contact .profile-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: rgba(241, 245, 249, 0.8);
+}
+
+.contact .profile-handle {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(186, 195, 208, 0.4);
+}
+
+.contact .profile-arrow {
+    font-size: 12px;
+    color: rgba(56, 189, 248, 0.3);
+    transition: color 0.2s, transform 0.2s;
+}
+
+.contact .profile-link:hover .profile-arrow {
+    color: #38bdf8;
+    transform: translateX(3px);
+}
+
+/* ── RIGHT: FORM ── */
+.contact .right-panel {
+    position: relative;
+    z-index: 1;
+    padding: 60px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: fadeLeft 0.8s 0.1s both;
+}
+
+.contact .form-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: rgba(241, 245, 249, 0.6);
+    margin-bottom: 50px;
+}
+
+.contact .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact .field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact .field label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(148, 163, 184, 0.35);
+}
+
+.contact .field input,
+.contact .field textarea {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    padding: 13px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: #f1f5f9;
+    outline: none;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    resize: none;
+}
+
+.contact .field input::placeholder,
+.contact .field textarea::placeholder {
+    color: rgba(148, 163, 184, 0.18);
+}
+
+.contact .field input:focus,
+.contact .field textarea:focus {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.06);
+}
+
+.contact .field textarea {
+    height: 130px;
+}
+
+.contact .btn-send {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #38bdf8;
+    color: #0f172a;
+    padding: 14px 32px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+    margin-top: 4px;
+}
+
+.contact .btn-send:hover {
+    background: #7dd3fc;
+    box-shadow: 0 0 32px rgba(56, 189, 248, 0.45);
+    transform: translateY(-2px);
+}
+
+.contact .success-msg {
+    padding: 18px 22px;
+    background: rgba(56, 189, 248, 0.05);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    color: #38bdf8;
+    text-align: center;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeRight {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeLeft {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

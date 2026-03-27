@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@900&family=DM+Mono:wght@300;400&display=swap');
+
+.achievement {
+    min-height: calc(100dvh - 68px);
+    width: 100%;
+    background: #080c14;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.achievement .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.achievement .page {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 30px 40px;
+}
+
+/* ── HEADER ── */
+.achievement .header {
+    margin-bottom: 52px;
+    animation: fadeUp 0.7s both;
+}
+
+.achievement .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.achievement .eyebrow::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: #38bdf8;
+}
+
+.achievement .page-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: clamp(30px, 3vw, 80px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+}
+
+.achievement .page-title .solid {
+    color: #f1f5f9;
+}
+
+.achievement .page-title .outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.35);
+    margin-left: 10px;
+}
+
+/* ── GRID ── */
+.achievement .ach-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ── CARD ── */
+.achievement .ach-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    padding: 26px 32px;
+    display: grid;
+    grid-template-columns: 44px auto 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 0 24px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.6s both;
+    transition: border-color 0.3s, transform 0.25s;
+}
+
+.achievement .ach-card:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    transform: translateX(4px);
+}
+
+.achievement .ach-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 2px;
+    background: #38bdf8;
+    box-shadow: 0 0 8px #38bdf8;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+}
+
+.achievement .ach-card:hover::before {
+    transform: scaleY(1);
+}
+
+.achievement .ach-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(56, 189, 248, 0.04) 0%, transparent 40%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.achievement .ach-card:hover::after {
+    opacity: 1;
+}
+
+/* ── PLATFORM ICON (col 1) ── */
+.achievement .platform-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    grid-row: 1 / 3;
+    grid-column: 1;
+}
+
+.achievement .platform-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.achievement .platform-initials {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: #38bdf8;
+    letter-spacing: 0.05em;
+}
+
+/* ── STARS (col 2, row 1) ── */
+.achievement .stars {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.achievement .star {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+.achievement .star.filled {
+    color: #f59e0b;
+    text-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+}
+
+.achievement .ach-count {
+    font-family: 'Barlow', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #38bdf8;
+    line-height: 1;
+}
+
+/* ── TITLE (col 3, row 1) ── */
+.achievement .ach-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    color: rgba(241, 245, 249, 0.9);
+    line-height: 1.4;
+    grid-column: 3;
+    grid-row: 1;
+    align-self: center;
+}
+
+/* ── DESC (col 2-3, row 2) ── */
+.achievement .ach-desc {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    color: rgba(148, 163, 184, 0.6);
+    line-height: 1.7;
+    grid-column: 2 / 4;
+    grid-row: 2;
+    margin-top: 8px;
+}
+
+/* ── BOTTOM (col 4, rows 1-2) ── */
+.achievement .card-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    grid-column: 4;
+    grid-row: 1 / 3;
+    padding-left: 24px;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    align-self: stretch;
+    justify-content: center;
+}
+
+.achievement .ach-platform {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(148, 163, 184, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.achievement .ach-platform::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #38bdf8;
+    opacity: 0.4;
+}
+
+.achievement .ach-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(56, 189, 248, 0.45);
+    text-decoration: none;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.achievement .ach-link:hover {
+    color: #38bdf8;
+}
+
+/* ── PLATFORM TAG — hidden in horizontal (shown via platform text) ── */
+.achievement .platform-tag {
+    display: none;
+}
+
+/* ── CARD TOP — no longer needed as wrapper ── */
+.achievement .card-top {
+    display: contents;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

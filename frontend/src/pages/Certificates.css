@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@900&family=DM+Mono:wght@300;400&display=swap');
+
+.certificates {
+    min-height: calc(100dvh - 68px);
+    width: 100%;
+    background: #080c14;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.certificates .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.certificates .page {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 40px;
+}
+
+/* ── HEADER ── */
+.certificates .header {
+    margin-bottom: 40px;
+    animation: fadeUp 0.7s both;
+}
+
+.certificates .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.certificates .eyebrow::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: #38bdf8;
+}
+
+/* .certificates .page-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: clamp(48px, 7vw, 80px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+} */
+
+/* .certificates .page-title .solid {
+    color: #f1f5f9;
+} */
+
+/* .certificates .page-title .outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.35);
+    margin-left: 12px;
+} */
+
+/* ── GRID ── */
+.certificates .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* ── FLIP CARD ── */
+.certificates .flip-card {
+    height: 220px;
+    perspective: 1200px;
+    cursor: pointer;
+    animation: fadeUp 0.6s both;
+    text-decoration: none;
+    display: block;
+}
+
+.certificates .flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.certificates .flip-card:hover .flip-inner {
+    transform: rotateY(180deg);
+}
+
+.certificates .flip-front,
+.flip-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* ── FRONT ── */
+.certificates .flip-front {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    transition: border-color 0.3s;
+    gap: 12px;
+}
+
+.certificates .flip-card:hover .flip-front {
+    border-color: rgba(56, 189, 248, 0.2);
+}
+
+/* Corner accents */
+.certificates .flip-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border-top: 1px solid rgba(56, 189, 248, 0.25);
+    border-left: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 14px 0 0 0;
+}
+
+.certificates .flip-front::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    border-right: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 0 0 14px 0;
+}
+
+/* Row 1: Logo + Date */
+.certificates .front-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ── ISSUER LOGO ── */
+.certificates .issuer-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.certificates .issuer-logo img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.certificates .issuer-initials {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #38bdf8;
+}
+
+/* Date pill */
+.certificates .cert-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: rgba(56, 189, 248, 0.5);
+    background: rgba(56, 189, 248, 0.06);
+    border: 1px solid rgba(56, 189, 248, 0.12);
+    border-radius: 999px;
+    padding: 4px 12px;
+}
+
+/* Row 2: Certificate Name */
+.certificates .cert-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    color: rgba(241, 245, 249, 0.9);
+    line-height: 1.5;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* Row 3: Company + Domain */
+.certificates .front-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.certificates .cert-issuer {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(148, 163, 184, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.certificates .cert-issuer::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #38bdf8;
+    opacity: 0.4;
+    flex-shrink: 0;
+}
+
+.certificates .cert-domain {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(56, 189, 248, 0.55);
+    background: rgba(56, 189, 248, 0.06);
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 999px;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+
+/* ── BACK ── */
+.certificates .flip-back {
+    transform: rotateY(180deg);
+    background: #0a1628;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.certificates .back-img {
+    flex: 1;
+    overflow: hidden;
+}
+
+.certificates .back-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    transition: transform 0.4s;
+}
+
+.certificates .flip-card:hover .back-img img {
+    transform: scale(1.04);
+}
+
+.certificates .back-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0d1f35, #091525);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.certificates .back-placeholder-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(56, 189, 248, 0.3);
+}
+
+.certificates .back-footer {
+    padding: 10px 16px;
+    background: rgba(8, 12, 20, 0.95);
+    border-top: 1px solid rgba(56, 189, 248, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.certificates .back-footer-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: #38bdf8;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 240px;
+}
+
+.certificates .back-footer-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: rgba(56, 189, 248, 0.5);
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

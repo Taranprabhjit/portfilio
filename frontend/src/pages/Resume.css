@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@900&family=DM+Mono:wght@300;400&display=swap');
+
+.resume {
+    height: calc(100dvh - 68px);
+    width: 100%;
+    background: #080c14;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.resume .grid-bg {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(56, 189, 248, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── TOP BAR ── */
+.resume .top-bar {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 160px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(8, 12, 20, 0.8);
+    backdrop-filter: blur(12px);
+    flex-shrink: 0;
+    animation: fadeDown 0.7s both;
+}
+
+.resume .top-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.resume .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resume .eyebrow::before {
+    content: '';
+    width: 16px;
+    height: 1px;
+    background: #38bdf8;
+}
+
+.resume .page-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.9;
+}
+
+.resume .page-title .solid {
+    color: #f1f5f9;
+    display: inline;
+}
+
+.resume .page-title .outline {
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.35);
+    margin-left: 6px;
+    display: inline;
+}
+
+/* ── BUTTONS ── */
+.resume .top-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.resume .btn-download {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #38bdf8;
+    color: #0f172a;
+    padding: 10px 22px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.resume .btn-download:hover {
+    background: #7dd3fc;
+    box-shadow: 0 0 32px rgba(56, 189, 248, 0.45);
+    transform: translateY(-1px);
+}
+
+.resume .btn-open {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: rgba(148, 163, 184, 0.7);
+    padding: 10px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.resume .btn-open:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    color: #38bdf8;
+}
+
+/* ── PDF VIEWER ── */
+.resume .viewer-wrap {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 48px;
+    overflow: hidden;
+    animation: fadeUp 0.7s 0.1s both;
+}
+
+.resume .pdf-frame {
+    width: 100%;
+    max-width: 850px;
+    height: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    box-shadow:
+        0 0 0 1px rgba(56, 189, 248, 0.05),
+        0 32px 80px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    position: relative;
+    background: #0f1929;
+}
+
+/* Corner accents */
+.resume .pdf-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border-top: 1px solid rgba(56, 189, 248, 0.5);
+    border-left: 1px solid rgba(56, 189, 248, 0.5);
+    border-radius: 12px 0 0 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.pdf-frame::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.5);
+    border-right: 1px solid rgba(56, 189, 248, 0.5);
+    border-radius: 0 0 12px 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.resume .pdf-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
